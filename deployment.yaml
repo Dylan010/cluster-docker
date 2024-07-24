@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: desafio-14-deployment
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: desafio-14
+  template:
+    metadata:
+      labels:
+        app: desafio-14
+    spec:
+      containers:
+      - name: desafio-14
+        image: dy010101/desafio-13:latest
+        ports:
+        - containerPort: 5000
